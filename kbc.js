@@ -58,7 +58,7 @@ const kbc = () => {
           instead of the minimum amount.
   */
 	// Display a welcome message only once to the user at the start of the game.
-	console.log(chalk.yellowBright('\t----- Welcome To KBC.js 🦊 ------'));
+	console.log(chalk.yellowBright('\t----- Welcome To KBC.js 🤑 ------'));
 	// For each question, display the prize won until now and available life line.
 	// For now, the below code works for only one question without LIFE-LINE and QUIT checks
 	let idx = 0;
@@ -74,12 +74,12 @@ const kbc = () => {
 		}`);
 
 		const question = questions[idx];
-		console.log(`\tQuestion ${qNo}: ${question.name}`);
-		console.log('\t\tOptions:');
-		console.log(`\t\t\tOption 1: ${question.option1}`);
-		console.log(`\t\t\tOption 2: ${question.option2}`);
-		console.log(`\t\t\tOption 3: ${question.option3}`);
-		console.log(`\t\t\tOption 4: ${question.option4}`);
+		console.log(chalk.blue(`\tQuestion ${qNo}: ${question.name}`));
+		console.log(chalk.magenta('\t\tOptions:'));
+		console.log(chalk.cyan(`\t\t\tOption 1: ${question.option1}`));
+		console.log(chalk.cyan(`\t\t\tOption 2: ${question.option2}`));
+		console.log(chalk.cyan(`\t\t\tOption 3: ${question.option3}`));
+		console.log(chalk.cyan(`\t\t\tOption 4: ${question.option4}`));
 		const ans = readlineSync.question('Your choice ( 1-4 ) : ');
 
 		// check for the input validations
@@ -137,6 +137,9 @@ const kbc = () => {
 	// print the total money won in the end.
 	if (gameState.hasWon) {
 		console.log(`You Have Won ${gameState.totalMoneyWon} 🤑`);
+		if (idx == 15) {
+			console.log(chalk.green('Congratulations for Completing the Game 🎉'));
+		}
 	} else {
 		if (idx < 5) {
 			console.log(`You Have Won 0 💰`);
